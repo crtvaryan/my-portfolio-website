@@ -227,7 +227,10 @@ const Contact = () => {
         const { name, email, message } = e.target.elements;
 
         try {
-            const response = await fetch('http://localhost:5000/api/contact', {
+            // IMPORTANT: Replace this with your actual Render backend URL
+            const backendUrl = 'https://aryan-portfolio-server.onrender.com/api/contact'; // Example URL
+
+            const response = await fetch(backendUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
