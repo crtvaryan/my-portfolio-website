@@ -80,7 +80,7 @@ const About = () => (
         <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-5 gap-12 items-center">
                 <AnimatedComponent animation="slide-in-left" className="md:col-span-2 flex justify-center">
-                    <img src="https://placehold.co/400x400/FFE8D8/502200?text=Profile+Pic" alt="Profile Picture" className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg" />
+                    <img src="https://placehold.co/400x400/FFE8D8/502200?text=Profile+Pic" alt="" className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg" />
                 </AnimatedComponent>
                 <AnimatedComponent animation="slide-in-right" delay="0.2s" className="md:col-span-3">
                     <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--md-sys-color-on-secondary-container)' }}>About Me</h2>
@@ -185,7 +185,7 @@ const TestimonialCard = ({ quote, avatar, name, title, delay }) => (
         <div className="p-8 rounded-xl h-full" style={{ backgroundColor: 'var(--md-sys-color-surface-variant)' }}>
             <p className="text-lg italic mb-6" style={{ color: 'var(--md-sys-color-on-surface-variant)' }}>"{quote}"</p>
             <div className="flex items-center">
-                <img className="w-12 h-12 rounded-full mr-4" src={avatar} alt={`Avatar of ${name}`} />
+                <img className="w-12 h-12 rounded-full mr-4" src={avatar} alt="" />
                 <div>
                     <p className="font-bold">{name}</p>
                     <p className="text-sm" style={{ color: 'var(--md-sys-color-outline)' }}>{title}</p>
