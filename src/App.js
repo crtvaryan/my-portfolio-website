@@ -55,7 +55,7 @@ const Hero = () => (
             <div className="max-w-4xl mx-auto">
                 <AnimatedComponent animation="reveal-up">
                     <img
-                        src="/logo.png" 
+                        src="/logo.png"
                         alt="Video Editing Portfolio Logo"
                         className="mx-auto mb-6 w-full max-w-lg"
                     />
@@ -80,7 +80,8 @@ const About = () => (
         <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-5 gap-12 items-center">
                 <AnimatedComponent animation="slide-in-left" className="md:col-span-2 flex justify-center">
-                    <img src="https://placehold.co/400x400/FFE8D8/502200?text=Profile+Pic" alt="" className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg" />
+                    {/* UPDATED IMAGE SOURCE BELOW */}
+                    <img src="/profile-photo.jpg" alt="Aryan, Video Editor" className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-lg" />
                 </AnimatedComponent>
                 <AnimatedComponent animation="slide-in-right" delay="0.2s" className="md:col-span-3">
                     <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--md-sys-color-on-secondary-container)' }}>About Me</h2>
@@ -103,12 +104,19 @@ const About = () => (
     </section>
 );
 
-const PortfolioCard = ({ videoSrc, poster, title, description, price, priceBg, priceColor, delay }) => (
+const PortfolioCard = ({ videoSrc, title, description, price, priceBg, priceColor, delay }) => (
     <AnimatedComponent animation="reveal-up" delay={delay}>
         <div className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300 h-full flex flex-col">
-            <video className="w-full aspect-video" controls poster={poster} src={videoSrc}>
-                Your browser does not support the video tag.
-            </video>
+            <div className="w-full aspect-video">
+                <iframe
+                    className="w-full h-full"
+                    src={videoSrc}
+                    title={title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen>
+                </iframe>
+            </div>
             <div className="p-6 flex-grow flex flex-col">
                 <h3 className="font-bold text-xl mb-2">{title}</h3>
                 <p className="text-gray-600 mb-4 flex-grow">{description}</p>
@@ -122,12 +130,60 @@ const PortfolioCard = ({ videoSrc, poster, title, description, price, priceBg, p
 
 const Portfolio = () => {
     const portfolioItems = [
-        { videoSrc: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", poster: "https://placehold.co/600x400/FFE8D8/502200?text=Talking+Head", title: "Talking Head Videos", description: "Simple text + best for edu videos + color grading + sfx.", price: "Rs500/min", priceBg: 'var(--md-sys-color-primary-container)', priceColor: 'var(--md-sys-color-on-primary-container)' },
-        { videoSrc: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", poster: "https://placehold.co/600x400/EFEBE9/2D160C?text=Motion+Graphics", title: "Motion Graphics", description: "Dynamic animations to bring your brand's story to life.", price: "$250/min", priceBg: 'var(--md-sys-color-secondary-container)', priceColor: 'var(--md-sys-color-on-secondary-container)' },
-        { videoSrc: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", poster: "https://placehold.co/600x400/E6E6B4/1C1D02?text=CGI+Ads", title: "CGI Ads", description: "High-impact CGI for commercials that stand out.", price: "$500/min", priceBg: 'var(--md-sys-color-tertiary-container)', priceColor: 'var(--md-sys-color-on-tertiary-container)' },
-        { videoSrc: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", poster: "https://placehold.co/600x400/FFE8D8/502200?text=VFX", title: "VFX", description: "Seamless visual effects for a cinematic look.", price: "$400/min", priceBg: 'var(--md-sys-color-primary-container)', priceColor: 'var(--md-sys-color-on-primary-container)' },
-        { videoSrc: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4", poster: "https://placehold.co/600x400/EFEBE9/2D160C?text=Shorts+%26+Reels", title: "Shorts and Reels", description: "Trendy, fast-paced edits for social media dominance.", price: "$100/min", priceBg: 'var(--md-sys-color-secondary-container)', priceColor: 'var(--md-sys-color-on-secondary-container)' },
-        { videoSrc: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4", poster: "https://placehold.co/600x400/E6E6B4/1C1D02?text=Event+Coverage", title: "Event Coverage", description: "Capturing the energy and key moments of your events.", price: "$200/min", priceBg: 'var(--md-sys-color-tertiary-container)', priceColor: 'var(--md-sys-color-on-tertiary-container)' },
+        {
+            videoSrc: "https://www.youtube.com/embed/oVtkuXaXRgQ",
+            poster: "https://placehold.co/600x400/FFE8D8/502200?text=Educational+Video",
+            title: "🎓 Course & Educational Videos",
+            description: "Clean, structured, and engaging edits for online courses and training content.",
+            price: "💰 Starting at ₹700/min",
+            priceBg: 'var(--md-sys-color-primary-container)',
+            priceColor: 'var(--md-sys-color-on-primary-container)'
+        },
+        {
+            videoSrc: "https://www.youtube.com/embed/KHfhsyyjuOc", // FIXED: Converted from /shorts/ link
+            poster: "https://placehold.co/600x400/EFEBE9/2D160C?text=3D+Animation",
+            title: "🎬 3D Animation (Blender)",
+            description: "High-quality 3D visuals and animations to bring concepts and stories to life.",
+            price: "💰 Starting at ₹5,000/min",
+            priceBg: 'var(--md-sys-color-secondary-container)',
+            priceColor: 'var(--md-sys-color-on-secondary-container)'
+        },
+        {
+            videoSrc: "https://www.youtube.com/embed/a0FQMUEgDPs", // FIXED: Converted from /shorts/ link
+            poster: "https://placehold.co/600x400/E6E6B4/1C1D02?text=VFX+Editing",
+            title: "✨ VFX Editing",
+            description: "Seamless effects, compositing, and creative visuals for cinematic impact.",
+            price: "💰 Starting at ₹4,000/min",
+            priceBg: 'var(--md-sys-color-tertiary-container)',
+            priceColor: 'var(--md-sys-color-on-tertiary-container)'
+        },
+        {
+            videoSrc: "https://www.youtube.com/embed/60HHK5iqkJk",
+            poster: "https://placehold.co/600x400/FFE8D8/502200?text=Shorts+%26+Reels",
+            title: "📱 Shorts & Reels Editing",
+            description: "Trendy, fast-paced edits optimized for Instagram, YouTube, and TikTok.",
+            price: "💰 Starting at ₹2000/90sec",
+            priceBg: 'var(--md-sys-color-primary-container)',
+            priceColor: 'var(--md-sys-color-on-primary-container)'
+        },
+        {
+            videoSrc: "https://www.youtube.com/embed/CrKoWJ3mDHI", // FIXED: Removed invalid angle brackets <>
+            poster: "https://placehold.co/600x400/EFEBE9/2D160C?text=Event+Promos",
+            title: "🎤 Event Promotional Videos",
+            description: "Highlight reels, promos, and aftermovies that capture the energy of your event.",
+            price: "💰 Starting at ₹2,000/min",
+            priceBg: 'var(--md-sys-color-secondary-container)',
+            priceColor: 'var(--md-sys-color-on-secondary-container)'
+        },
+        {
+            videoSrc: "https://www.youtube.com/embed/placeholder_video_id", // Using a placeholder for the empty link
+            poster: "https://placehold.co/600x400/E6E6B4/1C1D02?text=Motion+Graphics",
+            title: "🎨 Motion Graphics",
+            description: "Eye-catching titles, explainer animations, and graphic-driven content.",
+            price: "💰 Starting at ₹2000/min",
+            priceBg: 'var(--md-sys-color-tertiary-container)',
+            priceColor: 'var(--md-sys-color-on-tertiary-container)'
+        },
     ];
 
     return (
@@ -148,13 +204,12 @@ const Portfolio = () => {
 
 const Brands = () => {
     const brandLogos = [
-        "https://placehold.co/150x50/cccccc/333333?text=Prepfully",
-        "https://placehold.co/150x50/cccccc/333333?text=Brand+B",
-        "https://placehold.co/150x50/cccccc/333333?text=Brand+C",
-        "https://placehold.co/150x50/cccccc/333333?text=Brand+D",
-        "https://placehold.co/150x50/cccccc/333333?text=Brand+E",
-        "https://placehold.co/150x50/cccccc/333333?text=Brand+F",
-        "https://placehold.co/150x50/cccccc/333333?text=Brand+G",
+        "/brands/Prepfully.png",
+        "/brands/digi.png",
+        "/brands/ana.svg",
+        "/brands/teztech.png",
+        "/brands/rego.png",
+        "/brands/Ecell.png",
     ];
     const loopedLogos = [...brandLogos, ...brandLogos];
 
@@ -185,7 +240,7 @@ const TestimonialCard = ({ quote, avatar, name, title, delay }) => (
         <div className="p-8 rounded-xl h-full" style={{ backgroundColor: 'var(--md-sys-color-surface-variant)' }}>
             <p className="text-lg italic mb-6" style={{ color: 'var(--md-sys-color-on-surface-variant)' }}>"{quote}"</p>
             <div className="flex items-center">
-                <img className="w-12 h-12 rounded-full mr-4" src={avatar} alt="" />
+                <img className="w-12 h-12 rounded-full mr-4" src={avatar} alt={`Avatar of ${name}`} />
                 <div>
                     <p className="font-bold">{name}</p>
                     <p className="text-sm" style={{ color: 'var(--md-sys-color-outline)' }}>{title}</p>
@@ -197,9 +252,9 @@ const TestimonialCard = ({ quote, avatar, name, title, delay }) => (
 
 const Testimonials = () => {
     const testimonialsData = [
-        { quote: "The final video exceeded all our expectations. The editing was seamless, creative, and delivered right on schedule. An absolute professional!", avatar: "https://i.pravatar.cc/150?img=1", name: "Jane Doe", title: "Marketing Director, TechCorp" },
-        { quote: "Incredible work on our promotional video. The motion graphics were stunning and perfectly captured our brand's energy. Highly recommended!", avatar: "https://i.pravatar.cc/150?img=2", name: "John Smith", title: "Founder, Creative Startup" },
-        { quote: "The best video editor I've worked with. Fast, responsive, and incredibly talented. The reels for our social media have been a huge hit.", avatar: "https://i.pravatar.cc/150?img=3", name: "Sarah Lee", title: "Content Creator" },
+        { quote: "He made our teaching course videos with great professionalism, was super patient with revisions, really cared about the content quality, and always delivered on time. Honestly, one of the best experiences working with someone.", avatar: "/avatars/prepfully.jpg", name: "Shubham Jadav", title: "Product Manager, Prepfully" },
+        { quote: "Incredible work on our promotional video. The motion graphics were stunning and perfectly captured our brand's energy. Highly recommended!", avatar: "/avatars/digimain.jpg", name: "Ankit Dhiman", title: "Founder, Digi Maintainer" },
+        { quote: "He worked on our videos with full professionalism. Even when the video wasn’t ready, he always told the real reason and gave a clear new date. The best part I liked was his honesty and commitment really great to work with.", avatar: "/avatars/anatech.jpg", name: "Shubhas Sahu", title: "Founder, AnaTech" },
     ];
 
     return (
@@ -227,8 +282,7 @@ const Contact = () => {
         const { name, email, message } = e.target.elements;
 
         try {
-            // IMPORTANT: Replace this with your actual Render backend URL
-            const backendUrl = 'https://aryan-portfolio-server.onrender.com/api/contact'; // Example URL
+            const backendUrl = 'https://aryan-portfolio-server.onrender.com/api/contact';
 
             const response = await fetch(backendUrl, {
                 method: 'POST',
@@ -258,38 +312,46 @@ const Contact = () => {
         <section id="contact" className="py-20 overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
-                     <AnimatedComponent animation="reveal-up">
-                        <h2 className="text-3xl font-bold" style={{ color: 'var(--md-sys-color-on-secondary-container)' }}>Get In Touch</h2>
-                    </AnimatedComponent>
-                    <AnimatedComponent animation="reveal-up" delay="0.1s">
-                        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Have a project in mind? I'd love to hear from you. Let's discuss how I can help bring your vision to life.</p>
-                    </AnimatedComponent>
+                         <AnimatedComponent animation="reveal-up">
+                            <h2 className="text-3xl font-bold" style={{ color: 'var(--md-sys-color-on-secondary-container)' }}>Get In Touch</h2>
+                        </AnimatedComponent>
+                        <AnimatedComponent animation="reveal-up" delay="0.1s">
+                            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Have a project in mind? I'd love to hear from you. Let's discuss how I can help bring your vision to life.</p>
+                        </AnimatedComponent>
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-start">
                     <AnimatedComponent animation="slide-in-left">
                         <div className="space-y-8">
-                             <div className="flex items-start">
-                                 <span className="material-icons-outlined text-3xl p-3 rounded-full" style={{backgroundColor: 'var(--md-sys-color-primary-container)', color: 'var(--md-sys-color-on-primary-container)'}}>email</span>
-                                 <div className="ml-4">
-                                     <h3 className="text-lg font-semibold">Email</h3>
-                                     <p className="text-gray-600">My main inbox for all inquiries.</p>
-                                     <a href="mailto:rajaryangupta1445@gmail.com" className="text-[var(--md-sys-color-primary)] font-semibold hover:underline">rajaryangupta1445@gmail.com</a>
+                                 <div className="flex items-start">
+                                      <span className="material-icons-outlined text-3xl p-3 rounded-full" style={{backgroundColor: 'var(--md-sys-color-primary-container)', color: 'var(--md-sys-color-on-primary-container)'}}>email</span>
+                                      <div className="ml-4">
+                                          <h3 className="text-lg font-semibold">Email</h3>
+                                          <p className="text-gray-600">My main inbox for all inquiries.</p>
+                                          <a href="mailto:rajaryangupta1445@gmail.com" className="text-[var(--md-sys-color-primary)] font-semibold hover:underline">rajaryangupta1445@gmail.com</a>
+                                      </div>
                                  </div>
-                             </div>
-                             <div className="flex items-start">
-                                 <span className="material-icons-outlined text-3xl p-3 rounded-full" style={{backgroundColor: 'var(--md-sys-color-primary-container)', color: 'var(--md-sys-color-on-primary-container)'}}>phone</span>
-                                 <div className="ml-4">
-                                     <h3 className="text-lg font-semibold">Phone</h3>
-                                     <p className="text-gray-600">Available for calls 24/7</p>
-                                     <a href="tel:+917909001445" className="text-[var(--md-sys-color-primary)] font-semibold hover:underline">+91 7909001445</a>
+                                 <div className="flex items-start">
+                                      <span className="material-icons-outlined text-3xl p-3 rounded-full" style={{backgroundColor: 'var(--md-sys-color-primary-container)', color: 'var(--md-sys-color-on-primary-container)'}}>phone</span>
+                                      <div className="ml-4">
+                                          <h3 className="text-lg font-semibold">Phone</h3>
+                                          <p className="text-gray-600">Available for calls 24/7</p>
+                                          <a href="tel:+917909001445" className="text-[var(--md-sys-color-primary)] font-semibold hover:underline">+91 7909001445</a>
+                                      </div>
                                  </div>
-                             </div>
                         </div>
                         <div className="mt-12">
                             <h3 className="text-lg font-semibold mb-4">Follow Me</h3>
                             <div className="flex space-x-4">
-                               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-500 hover:text-[#E1306C] transition-colors duration-300"><svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12.315 2c-4.04.004-4.852.018-6.54.096C2.93 2.22 2.22 2.93 2.096 4.769c-.078 1.688-.092 2.5-.096 6.54s.018 4.852.096 6.54c.124 1.839.834 2.549 2.67 2.67 1.688.078 2.5.092 6.54.096s4.852-.018 6.54-.096c1.839-.121 2.549-.831 2.67-2.67.078-1.688-.092-2.5.096-6.54s-.018-4.852-.096-6.54C21.07 2.93 20.36 2.22 18.52 2.096 16.832 2.018 16.015 2 12.315 2zm0 1.802c4.002 0 4.74.016 6.41.094 1.456.068 2.036.29 2.426.68.39.39.612.97.68 2.426.078 1.67.094 2.408.094 6.41s-.016 4.74-.094 6.41c-.068 1.456-.29 2.036-.68 2.426-.39.39-.97.612-2.426.68-1.67.078-2.408.094-6.41.094s-4.74-.016-6.41-.094c-1.456-.068-2.036-.29-2.426-.68-.39-.39-.612-.97-.68-2.426-.078-1.67-.094-2.408-.094-6.41s.016-4.74.094-6.41c.068-1.456.29-2.036.68-2.426.39-.39.97-.612 2.426.68C7.575 3.818 8.313 3.802 12.315 3.802zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 15a3 3 0 110-6 3 3 0 010 6zm6.15-8.25a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clipRule="evenodd" /></svg></a>
-                               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-gray-500 hover:text-[#FF0000] transition-colors duration-300"><svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M19.802 5.576a2.47 2.47 0 00-1.743-1.743C16.538 3.5 12 3.5 12 3.5s-4.538 0-6.059.333a2.47 2.47 0 00-1.743 1.743C3.867 7.114 3.5 9.562 3.5 12s.367 4.886 7.7 6.424a2.47 2.47 0 001.743 1.743C13.462 20.5 18 20.5 18 20.5s4.538 0 6.059-.333a2.47 2.47 0 001.743-1.743c.333-1.538.333-3.986.333-6.424s-.367-4.886-.7-6.424zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z" clipRule="evenodd" /></svg></a>
+                                <a href="https://www.instagram.com/raj_aryan_03?igsh=MTZraGs3Z2lmN3BuaA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-500 hover:text-[#E1306C] transition-colors duration-300">
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://www.linkedin.com/in/crtvaryan65" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-500 hover:text-[#0A66C2] transition-colors duration-300">
+                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </AnimatedComponent>
@@ -369,7 +431,7 @@ const Header = () => {
             const activeLink = navRef.current?.querySelector('.nav-link.active');
             if (activeLink && highlightRef.current) {
                 highlightRef.current.style.width = `${activeLink.offsetWidth}px`;
-                highlightRef.current.style.height = `${activeLink.offsetHeight}px`;
+                highlightRef.current.style.height = `${activeLink.offsetHeight}py`;
                 highlightRef.current.style.left = `${activeLink.offsetLeft}px`;
                 highlightRef.current.style.opacity = '1';
             } else if (highlightRef.current) {
@@ -389,8 +451,8 @@ const Header = () => {
         <header id="home" className="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
             <nav className="container mx-auto px-6 py-3">
                 <div className="flex justify-between items-center">
-                    <a href="#hero" className="text-2xl font-bold" style={{ color: 'var(--md-sys-color-primary)' }}>
-                        CRTV ARYAN.
+                    <a href="#hero">
+                        <img src="/logo.png" alt="CRTV ARYAN Logo" className="h-10 w-auto" />
                     </a>
                     <div id="desktop-nav-links" ref={navRef} className="hidden md:flex space-x-2 items-center relative">
                         <span id="nav-highlight" ref={highlightRef}></span>
@@ -405,7 +467,7 @@ const Header = () => {
                             </a>
                         ))}
                     </div>
-                    <div className="md-hidden">
+                    <div className="md:hidden">
                         <button id="menu-btn" className="text-gray-600 focus:outline-none" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                             <span className="material-icons-outlined">{isMenuOpen ? 'close' : 'menu'}</span>
                         </button>
@@ -511,9 +573,6 @@ const App = () => {
                     animation: scroll 40s linear infinite;
                     display: flex;
                     width: calc(250px * 14);
-                }
-                .slider:hover .slide-track {
-                    animation-play-state: paused;
                 }
                 .slider .slide {
                     width: 250px;
